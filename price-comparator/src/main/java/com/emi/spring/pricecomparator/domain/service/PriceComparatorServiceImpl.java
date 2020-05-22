@@ -10,6 +10,8 @@ import com.emi.spring.pricecomparator.domain.dao.ProductDAO;
 import com.emi.spring.pricecomparator.domain.dao.ProductDAOImpl;
 import com.emi.spring.pricecomparator.domain.entity.ProductEntity;
 import com.emi.spring.pricecomparator.domain.model.ComparisonResult;
+import com.emi.spring.pricecomparator.external.ExternalService;
+import com.emi.spring.pricecomparator.external.ExternalServiceImpl;
 import org.hibernate.Session;
 import org.hibernate.SessionException;
 import org.hibernate.Transaction;
@@ -17,9 +19,11 @@ import org.hibernate.Transaction;
 public class PriceComparatorServiceImpl implements PriceComparatorService {
 
     private ProductDAO productDAO;
+    private ExternalService externalService;
 
     public PriceComparatorServiceImpl() {
         this.productDAO = new ProductDAOImpl();
+        this.externalService = new ExternalServiceImpl();
     }
 
     public ComparisonResult comparePriceFor(String product) throws NoRecordFoundException {
@@ -30,10 +34,11 @@ public class PriceComparatorServiceImpl implements PriceComparatorService {
 
         try {
             ProductEntity persistentProductEntity = productDAO.getProductByName(product);
+            float externalProductPrice = externalService.getPriceForProduct(product);
             if(persistentProductEntity == null) {
                 throw new NoRecordFoundException();
             }
-            return new ComparisonResult(persistentProductEntity.getPrice(),9);
+            return new ComparisonResult(persistentProductEntity.getPrice(),externalProductPrice);
         } catch (Exception e){
             tx.rollback();
             if(!(e instanceof NoRecordFoundException))

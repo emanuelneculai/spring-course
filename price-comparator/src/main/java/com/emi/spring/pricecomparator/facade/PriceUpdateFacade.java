@@ -5,9 +5,8 @@
  */
 package com.emi.spring.pricecomparator.facade;
 
-import com.emi.spring.pricecomparator.domain.model.ComparisonResult;
-import com.emi.spring.pricecomparator.domain.service.NoRecordFoundException;
+public interface PriceUpdateFacade {
 
-public interface PriceCompareFacade {
-    ComparisonResult comparePrice(String productName) throws NoRecordFoundException;
+    void updatePriceForProduct(String productName,float newPrice);
+
 }

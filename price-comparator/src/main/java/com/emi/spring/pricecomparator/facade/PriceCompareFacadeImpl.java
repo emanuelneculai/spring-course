@@ -18,13 +18,9 @@ public class PriceCompareFacadeImpl implements PriceCompareFacade {
         this.priceComparatorService = new PriceComparatorServiceImpl();
     }
 
-    public ComparisonResult comparePrice(String productName) throws IncorectProductException, NoRecordFoundException {
-        if (Product.contains(productName)) {
-            ComparisonResult result = priceComparatorService.comparePriceFor(productName);
-            return result;
-        } else {
-            throw new IncorectProductException();
-        }
+    public ComparisonResult comparePrice(String productName) throws NoRecordFoundException {
+        ComparisonResult result = priceComparatorService.comparePriceFor(productName);
+        return result;
     }
 
 }

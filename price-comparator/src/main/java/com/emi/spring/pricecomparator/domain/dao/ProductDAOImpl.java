@@ -20,4 +20,9 @@ public class ProductDAOImpl implements ProductDAO {
         return persistentProductEntity;
     }
 
+    public void updateProduct(ProductEntity productEntity) {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.saveOrUpdate(productEntity);
+    }
+
 }
