@@ -4,19 +4,20 @@
 <hibernate-configuration>
     <session-factory>
 
-        <property name = "hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
-        <property name = "hibernate.connection.driver_class">org.postgresql.Driver</property>
-        <property name = "hibernate.connection.url">jdbc:postgresql://localhost:5432/product-comparator</property>
-        <property name = "hibernate.connection.username">ptmadm</property>
+        <property name = "hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name = "hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name = "hibernate.connection.url">jdbc:mysql://localhost:3306/price-comparator</property>
+        <property name = "hibernate.connection.username">price-comparatorUser</property>
 
-        <property name = "hibernate.connection.password">ptmadm</property>
+        <property name = "hibernate.connection.password">root</property>
 
         <property name="show_sql">true</property>
-        <property name="hbm2ddl.auto">validate</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
         <property name="hibernate.current_session_context_class">thread</property>
 
         <!-- List of XML mapping files -->
         <mapping class="com.emi.spring.pricecomparator.domain.entity.ProductEntity"/>
+
 
     </session-factory>
 </hibernate-configuration>

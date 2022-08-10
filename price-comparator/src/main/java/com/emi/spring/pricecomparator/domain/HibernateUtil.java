@@ -9,22 +9,24 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import org.hibernate.service.ServiceRegistryBuilder;
 
 public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
 
+    static {
+//        Configuration configObj = new Configuration();
+//        configObj.configure("hibernate.cfg.xml");
+//
+//        ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
+//
+//        // Creating Hibernate Session Factory Instance
+//        sessionFactory = configObj.buildSessionFactory(serviceRegistryObj);
+
+        sessionFactory = new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+    }
+
     public static SessionFactory getSessionFactory() {
-        if (sessionFactory == null) {
-            Configuration configObj = new Configuration();
-            configObj.configure("hibernate.cfg.xml");
-
-            ServiceRegistry serviceRegistryObj = new StandardServiceRegistryBuilder().applySettings(configObj.getProperties()).build();
-
-            // Creating Hibernate Session Factory Instance
-            sessionFactory = configObj.buildSessionFactory(serviceRegistryObj);
-        }
 
         return sessionFactory;
     }

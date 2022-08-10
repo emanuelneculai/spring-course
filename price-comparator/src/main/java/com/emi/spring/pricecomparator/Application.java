@@ -22,9 +22,10 @@ public class Application {
     private PriceCompareFacade priceCompareFacade;
     private PriceUpdateFacade priceUpdateFacade;
 
-    Application() {
+    Application() throws ClassNotFoundException {
         this.priceCompareFacade = new PriceCompareFacadeImpl();
         this.priceUpdateFacade = new PriceUpdateFacadeImpl();
+        Class myclass  = Class.forName("com.emi.spring.pricecomparator.domain.HibernateUtil");
     }
 
     public void run() {
