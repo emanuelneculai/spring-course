@@ -7,7 +7,7 @@ package com.emi.spring.pricecomparator.facade;
 
 public enum UserActionOptions {
 
-    COMPARE(1,"Compare a product"),UPDATE(2,"Update a product");
+    COMPARE(1,"Compare a product"),UPDATE(2,"Update a product"),CREATE(3,"Create a product");
 
     private int nr;
     private String text;

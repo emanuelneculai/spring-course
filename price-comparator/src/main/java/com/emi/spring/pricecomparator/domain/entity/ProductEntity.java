@@ -5,16 +5,14 @@
  */
 package com.emi.spring.pricecomparator.domain.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "PRODUCT")
 public class ProductEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @Column(name = "PROODUCT_NAME")
@@ -22,6 +20,14 @@ public class ProductEntity {
 
     @Column(name = "PRICE")
     private Float price;
+
+    public ProductEntity() {
+    }
+
+    public ProductEntity(String productName, Float price) {
+        this.productName = productName;
+        this.price = price;
+    }
 
     public Long getId() {
         return id;

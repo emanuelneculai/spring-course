@@ -14,8 +14,8 @@ public class PriceCompareFacadeImpl implements PriceCompareFacade {
 
     private PriceComparatorService priceComparatorService;
 
-    public PriceCompareFacadeImpl() {
-        this.priceComparatorService = new PriceComparatorServiceImpl();
+    public PriceCompareFacadeImpl(PriceComparatorService priceComparatorService) {
+        this.priceComparatorService = priceComparatorService;
     }
 
     public ComparisonResult comparePrice(String productName) throws NoRecordFoundException {

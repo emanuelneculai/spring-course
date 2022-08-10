@@ -11,7 +11,8 @@ import com.emi.spring.pricecomparator.domain.dao.ProductDAOImpl;
 import com.emi.spring.pricecomparator.domain.entity.ProductEntity;
 import com.emi.spring.pricecomparator.domain.model.ComparisonResult;
 import com.emi.spring.pricecomparator.external.ExternalService;
-import com.emi.spring.pricecomparator.external.ExternalServiceImpl;
+import com.emi.spring.pricecomparator.external.ExternalServiceCell;
+import com.emi.spring.pricecomparator.external.ExternalServiceEmag;
 import org.hibernate.Session;
 import org.hibernate.SessionException;
 import org.hibernate.Transaction;
@@ -21,9 +22,9 @@ public class PriceComparatorServiceImpl implements PriceComparatorService {
     private ProductDAO productDAO;
     private ExternalService externalService;
 
-    public PriceComparatorServiceImpl() {
-        this.productDAO = new ProductDAOImpl();
-        this.externalService = new ExternalServiceImpl();
+    public PriceComparatorServiceImpl(ProductDAO productDAO,ExternalService externalService) {
+        this.productDAO = productDAO;
+        this.externalService = externalService;
     }
 
     public ComparisonResult comparePriceFor(String product) throws NoRecordFoundException {

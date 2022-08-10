@@ -5,7 +5,7 @@
  */
 package com.emi.spring.pricecomparator.external;
 
-public class ExternalServiceImpl implements ExternalService{
+public class ExternalServiceEmag implements ExternalService{
     public float getPriceForProduct(String productName) {
         return 50;
     }

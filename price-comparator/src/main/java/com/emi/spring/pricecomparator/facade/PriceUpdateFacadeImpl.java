@@ -12,8 +12,8 @@ public class PriceUpdateFacadeImpl implements PriceUpdateFacade {
 
     private ProductService productService;
 
-    public PriceUpdateFacadeImpl() {
-        this.productService = new ProductServiceImpl();
+    public PriceUpdateFacadeImpl(ProductService productService) {
+        this.productService = productService;
     }
 
     public void updatePriceForProduct(String productName, float newPrice) {

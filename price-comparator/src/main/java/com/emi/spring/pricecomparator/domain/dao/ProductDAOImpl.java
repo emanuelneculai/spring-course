@@ -25,4 +25,12 @@ public class ProductDAOImpl implements ProductDAO {
         session.saveOrUpdate(productEntity);
     }
 
+    @Override
+    public ProductEntity createProduct(String name, float price) {
+        ProductEntity productEntity = new ProductEntity(name, price);
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        Long id = (Long) session.save(productEntity);
+        return session.get(ProductEntity.class, id);
+    }
+
 }

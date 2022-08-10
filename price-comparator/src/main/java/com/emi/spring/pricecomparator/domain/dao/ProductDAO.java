@@ -10,4 +10,6 @@ import com.emi.spring.pricecomparator.domain.entity.ProductEntity;
 public interface ProductDAO {
     ProductEntity getProductByName(String name);
     void updateProduct(ProductEntity productEntity);
+
+    ProductEntity createProduct(String name, float price);
 }
